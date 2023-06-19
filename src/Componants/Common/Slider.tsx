@@ -25,7 +25,7 @@ const sliderData = [
     src: groceryImage,
     text: "신선한 식품!",
     small: "농장 직배송으로 더욱 신선한 식료품을 만나보세요.",
-    buttonLink: "/grocery",
+    buttonLink: "/error",
   },
 ];
 

@@ -6,7 +6,7 @@ interface iDrawer {
 
 const Drawer = ({ overlay }: iDrawer): JSX.Element => {
   const menus = [
-    { name: "fasion", title: "패션" },
+    { name: "fashion", title: "패션" },
     { name: "accessory", title: "액세서리" },
     { name: "digital", title: "디지털" },
   ];

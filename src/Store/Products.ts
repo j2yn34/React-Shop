@@ -50,3 +50,13 @@ export const digitalListState = selector<Product[]>({
     );
   },
 });
+
+export const AccessoryListState = selector<Product[]>({
+  key: "accessoryListState",
+  get: ({ get }) => {
+    const productsList = get(productsListState);
+    return (
+      productsList.filter((product) => product.category == "jewelery") || []
+    );
+  },
+});

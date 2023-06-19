@@ -1,16 +1,25 @@
 body::-webkit-scrollbar {
   display: block;
 }
+
+.main {
+  min-height: calc(100vh - 4rem - 224px);
+}
+
+.menu a {
+  padding: 0.75rem 1rem;
+}
+
 .carousel-container {
   overflow: hidden;
-  /* max-width: 100%; */
-  margin-top: 64px;
 }
+
 .carousel-container .carousel-slide {
   display: flex;
   justify-content: center;
   height: 700px;
 }
+
 .carousel-container .carousel-slide::before {
   content: "";
   position: absolute;
@@ -20,6 +29,7 @@ body::-webkit-scrollbar {
   height: 100%;
   background-color: rgba(0, 0, 0, 0.1);
 }
+
 .carousel-container .carousel-slide img {
   width: 100%;
   vertical-align: top;
@@ -31,8 +41,22 @@ body::-webkit-scrollbar {
   max-width: 50%;
   max-height: 50%;
 }
+
 .card.card-bordered {
   border-width: 0;
+}
+
+.card:hover figure img {
+  -webkit-transform: scale(1.2);
+  transform: scale(1.2);
+  transition: all 0.3s;
+}
+.card:not(:hover) figure img {
+  transition: 0.2s ease-out;
+}
+
+.view_image {
+  min-width: 20em;
 }
 
 @media screen and (max-width: 1024px) {

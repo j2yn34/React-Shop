@@ -1,17 +1,25 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Index from "./views/index";
-import Fashion from "./views/fashion";
-import Accessory from "./views/accessory";
-import Digital from "./views/digital";
-import Detail from "./views/detail";
-import { useEffect } from "react";
+import Index from "./views/Index";
+import Fashion from "./views/Fashion";
+import Accessory from "./views/Accessory";
+import Digital from "./views/Digital";
+import Detail from "./Componants/products/ProductView";
+import { useEffect, useRef } from "react";
 import { useSetRecoilState } from "recoil";
-import { Product } from "./Store/Products";
-import { cartState } from "./Store/cart";
-import Header from "./Componants/Common/Header";
-import Footer from "./Componants/Common/Footer";
+import { Product } from "./store/products";
+import { cartState } from "./store/cart";
+import Header from "./Componants/common/Header";
+import Footer from "./Componants/common/Footer";
+import Error from "./Componants/common/Error";
+import Drawer from "./Componants/common/Drawer";
+import Cart from "./views/Cart";
 
 const App = (): JSX.Element => {
+  const $hamburgur = useRef<HTMLInputElement>(null);
+  const overlay = () => {
+    $hamburgur?.current?.click();
+  };
+
   const setCartList = useSetRecoilState<Product[]>(cartState);
 
   useEffect(() => {
@@ -28,17 +36,20 @@ const App = (): JSX.Element => {
         <input id="side-menu" type="checkbox" className="drawer-toggle" />
         <div className="drawer-content">
           <Header />
-          <section className="main">
+          <section className="main pt-16">
             <Routes>
               <Route path="/" element={<Index />} />
+              <Route path="/error" element={<Error />} />
+              <Route path="/cart" element={<Cart />} />
               <Route path="/fashion" element={<Fashion />} />
               <Route path="/accessory" element={<Accessory />} />
               <Route path="/digital" element={<Digital />} />
-              <Route path="/detail/:id" element={<Detail />} />
+              <Route path="/product/:id" element={<Detail />} />
             </Routes>
-            <Footer />
           </section>
+          <Footer />
         </div>
+        <Drawer overlay={overlay} />
       </div>
     </BrowserRouter>
   );

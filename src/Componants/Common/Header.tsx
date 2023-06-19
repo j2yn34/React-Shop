@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useRecoilValue } from "recoil";
-import { Product } from "../../Store/Products";
-import { cartState } from "../../Store/cart";
+import { Product } from "../../store/products";
+import { cartState } from "../../store/cart";
 
 const Header = () => {
   const getCartList = useRecoilValue<Product[]>(cartState);

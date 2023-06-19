@@ -1,18 +1,21 @@
 import { useRecoilValue } from "recoil";
-import ProductList from "../Componants/ProductList";
-// import ProductCard from "../Componants/ProductCard";
-import { fashionListState } from "../Store/Products";
+import ProductList from "../Componants/products/ProductList";
+import { fashionListState } from "../store/products";
+import Breadcrumb from "../Componants/common/Breadcrumb";
 
 const Index = () => {
   const fashionList = useRecoilValue(fashionListState);
 
   return (
-    <article className="flex  flex-col w-full">
-      <h1 className="text-center text-[3rem] mt-[3rem]">패션</h1>
-      <div className="pt-6 lg:pt-12 pb-4 lg:pb-8 px-4 xl:px-2 xl:container w-full mx-auto">
+    <section className="pt-4 lg:pt-5 pb-4 lg:pb-8 px-4 xl:px-2 xl:container mx-auto">
+      <Breadcrumb category="홈" crumb="패션" />
+      <article className="pt-2 lg:pt-4 pb-4 lg:pb-8 px-4 xl:px-2 mb-20 xl:container mx-auto">
+        <h2 className="mb-5 lg:mb-8 text-3xl lg:text-4xl text-center font-bold">
+          패션
+        </h2>
         <ProductList data={fashionList} />
-      </div>
-    </article>
+      </article>
+    </section>
   );
 };
 
