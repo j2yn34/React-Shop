@@ -42,10 +42,6 @@ body::-webkit-scrollbar {
   max-height: 50%;
 }
 
-.card.card-bordered {
-  border-width: 0;
-}
-
 .card:hover figure img {
   -webkit-transform: scale(1.2);
   transform: scale(1.2);

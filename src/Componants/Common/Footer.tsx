@@ -302,7 +302,7 @@ const GithubIcon: React.FC = () => {
 
 const Footer: React.FC = () => {
   return (
-    <footer className="p-10 footer bg-base-200 text-base-content footer-center">
+    <footer className="dark:bg-base-200 bg-gray-100 text-base-content p-10 footer footer-center">
       <div className="grid grid-flow-col gap-4">
         <a
           href="https://zero-base.co.kr/"

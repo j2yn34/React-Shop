@@ -32,11 +32,11 @@ const App = (): JSX.Element => {
 
   return (
     <BrowserRouter>
-      <div className="drawer">
+      <div className="drawer dark:bg-neutral bg-white">
         <input id="side-menu" type="checkbox" className="drawer-toggle" />
         <div className="drawer-content">
           <Header />
-          <section className="main pt-16">
+          <section className="main pt-16 ">
             <Routes>
               <Route path="/" element={<Index />} />
               <Route path="/error" element={<Error />} />
