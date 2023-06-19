@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+.drawer-toggle ~ .drawer-content {
+  z-index: 0;
+}
+
+.drawer-toggle ~ .drawer-side > .drawer-overlay + * {
+  height: 100vh;
+}
