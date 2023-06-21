@@ -2,6 +2,19 @@ body::-webkit-scrollbar {
   display: block;
 }
 
+::-webkit-scrollbar {
+  width: 14px;
+  height: 6px;
+  background: none;
+}
+::-webkit-scrollbar-thumb {
+  background: #7088a0;
+  opacity: 0.1;
+}
+::-webkit-scrollbar-track {
+  background: rgba(200, 200, 200, 0.3);
+}
+
 .main {
   min-height: calc(100vh - 4rem - 224px);
 }

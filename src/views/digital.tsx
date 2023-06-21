@@ -3,7 +3,7 @@ import ProductList from "../Componants/products/ProductList";
 import { digitalListState } from "../store/products";
 import Breadcrumb from "../Componants/common/Breadcrumb";
 
-const Index = () => {
+const Digital = () => {
   const digitalList = useRecoilValue(digitalListState);
 
   return (
@@ -19,4 +19,4 @@ const Index = () => {
   );
 };
 
-export default Index;
+export default Digital;

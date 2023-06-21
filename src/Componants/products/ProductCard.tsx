@@ -11,7 +11,7 @@ const ProductCard = (props: { data: Product }) => {
       <figure className="flex h-80 bg-white overflow-hidden">
         <img src={product.image} alt="Shoes" />
       </figure>
-      <div className="card-body bg-gray-100 dark:bg-gray-700">
+      <div className="card-body rounded-b-2xl bg-gray-100 dark:bg-gray-700">
         <p className="card-title text-base">{product.title}</p>
         <p className="text-base">${product.price}</p>
       </div>

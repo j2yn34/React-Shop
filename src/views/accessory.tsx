@@ -3,7 +3,7 @@ import ProductList from "../Componants/products/ProductList";
 import { AccessoryListState } from "../store/products";
 import Breadcrumb from "../Componants/common/Breadcrumb";
 
-const Index = () => {
+const Accessory = () => {
   const accessoryList = useRecoilValue(AccessoryListState);
 
   return (
@@ -19,4 +19,4 @@ const Index = () => {
   );
 };
 
-export default Index;
+export default Accessory;

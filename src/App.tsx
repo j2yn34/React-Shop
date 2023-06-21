@@ -32,7 +32,7 @@ const App = (): JSX.Element => {
 
   return (
     <BrowserRouter>
-      <div className="drawer dark:bg-neutral bg-white">
+      <div className="drawer">
         <input id="side-menu" type="checkbox" className="drawer-toggle" />
         <div className="drawer-content">
           <Header />
@@ -54,10 +54,5 @@ const App = (): JSX.Element => {
     </BrowserRouter>
   );
 };
-
-// 메인페이지 index 접속했을때
-// 악세서리 / 패션 / 디지털 카테고리 페이지
-// 상세페이지
-// 바구니
 
 export default App;

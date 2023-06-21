@@ -20,7 +20,7 @@ const Drawer = ({ overlay }: iDrawer): JSX.Element => {
             <li key={menu.name}>
               <Link
                 to={`/${menu.name}`}
-                onClick={overlay}
+                onClick={() => overlay}
                 className="!text-gray-700 active:!text-white dark:!text-white"
               >
                 {menu.title}

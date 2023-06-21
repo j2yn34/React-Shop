@@ -1,11 +1,18 @@
 import { Link } from "react-router-dom";
 import { useRecoilValue } from "recoil";
-import { Product } from "../../store/products";
+import { Product, productsListState } from "../../store/products";
 import { cartState } from "../../store/cart";
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 
 const Header = () => {
   const getCartList = useRecoilValue<Product[]>(cartState);
+  const productsList = useRecoilValue(productsListState);
+
+  const [searchText, setSearchText] = React.useState("");
+  const [searchProductList, setSearchProductList] = React.useState<Product[]>(
+    []
+  );
+
   const menus = [
     { name: "fashion", title: "패션" },
     { name: "accessory", title: "액세서리" },
@@ -47,8 +54,16 @@ const Header = () => {
     }
   }, []);
 
+  useEffect(() => {
+    const searchList = productsList.filter((now) =>
+      now.title.toLowerCase().includes(searchText.toLowerCase())
+    );
+    console.log("검색된 상품목록:", searchList);
+    setSearchProductList(searchList);
+  }, [searchText]);
+
   return (
-    <div className="fixed z-10 w-full navbar shadow-lg bg-white dark:bg-neutral text-neutral-content">
+    <div className="fixed z-10 w-full navbar shadow-lg bg-white dark:bg-base-200 text-neutral-content">
       <div className="flex w-full xl:container xl:m-auto">
         <label
           htmlFor="side-menu"
@@ -108,14 +123,19 @@ const Header = () => {
               <path d="M21.64,13a1,1,0,0,0-1.05-.14,8.05,8.05,0,0,1-3.37.73A8.15,8.15,0,0,1,9.08,5.49a8.59,8.59,0,0,1,.25-2A1,1,0,0,0,8,2.36,10.14,10.14,0,1,0,22,14.05,1,1,0,0,0,21.64,13Zm-9.5,6.69A8.14,8.14,0,0,1,7.08,5.22v.27A10.15,10.15,0,0,0,17.22,15.63a9.79,9.79,0,0,0,2.1-.22A8.11,8.11,0,0,1,12.14,19.73Z" />
             </svg>
           </label>
+          {/* {JSON.stringify(searchProductList.map((now) => now.title))} */}
           <div className="form-control">
             <input
               type="text"
               placeholder="검색"
-              className="input input-bordered md:w-auto "
+              className="input input-bordered md:w-auto bg-gray-300 dark:bg-gray-600 !text-gray-800 dark:!text-white"
+              onChange={(event) => {
+                console.log("입력한값:", event.target.value);
+                setSearchText(event.target.value);
+              }}
             />
           </div>
-          <a className="btn btn-ghost sm:w-12 ml-1" href="/cart">
+          <Link to="/cart" className="btn btn-ghost sm:w-12 ml-1">
             <span className="relative">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -134,7 +154,7 @@ const Header = () => {
                 {getCartList.length}
               </span>
             </span>
-          </a>
+          </Link>
         </div>
       </div>
     </div>
