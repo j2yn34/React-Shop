@@ -2,7 +2,7 @@ import { useRecoilValue, useSetRecoilState } from "recoil";
 import { Product, productsListSelctor } from "../../store/products";
 import { cartState } from "../../store/cart";
 import { useEffect, useState } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import Rating from "../common/Rating";
 import Breadcrumb from "../common/Breadcrumb";
 
@@ -20,10 +20,9 @@ const Index = () => {
     if (product) {
       setCartList((old) => {
         const newList = [...old, product];
-        localStorage.setItem("cart", JSON.stringify(newList));
+        localStorage.setItem("cartInfo", JSON.stringify(newList));
         return newList;
       });
-      // 값 저장
     }
   };
 
@@ -32,8 +31,8 @@ const Index = () => {
       (product) => product.id == Number(id)
     );
     if (findProduct == null) {
-      // 오류처리
-      //router.push
+      const navigate = useNavigate();
+      navigate("/error");
       return;
     }
     setProudct(findProduct);
