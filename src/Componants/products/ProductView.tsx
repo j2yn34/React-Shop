@@ -20,7 +20,7 @@ const Index = () => {
     if (product) {
       setCartList((old) => {
         const newList = [...old, product];
-        localStorage.setItem("cartInfo", JSON.stringify(newList));
+        localStorage.setItem("cart", JSON.stringify(newList));
         return newList;
       });
     }

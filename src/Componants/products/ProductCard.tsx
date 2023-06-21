@@ -9,7 +9,7 @@ const ProductCard = (props: { data: Product }) => {
       className="card card-bordered border-gray-200 dark:border-gray-800 card-compact lg:card-normal"
     >
       <figure className="flex h-80 bg-white overflow-hidden">
-        <img src={product.image} alt="Shoes" />
+        <img src={product.image} alt={product.title} />
       </figure>
       <div className="card-body rounded-b-2xl bg-gray-100 dark:bg-gray-700">
         <p className="card-title text-base">{product.title}</p>

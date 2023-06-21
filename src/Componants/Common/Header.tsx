@@ -6,12 +6,12 @@ import React, { useEffect } from "react";
 
 const Header = () => {
   const getCartList = useRecoilValue<Product[]>(cartState);
-  const productsList = useRecoilValue(productsListSelctor);
+  // const productsList = useRecoilValue(productsListSelctor);
 
-  const [searchText, setSearchText] = React.useState("");
-  const [searchProductList, setSearchProductList] = React.useState<Product[]>(
-    []
-  );
+  // const [searchText, setSearchText] = React.useState("");
+  // const [searchProductList, setSearchProductList] = React.useState<Product[]>(
+  //   []
+  // );
 
   const menus = [
     { name: "fashion", title: "패션" },
@@ -54,13 +54,13 @@ const Header = () => {
     }
   }, []);
 
-  useEffect(() => {
-    const searchList = productsList.filter((now) =>
-      now.title.toLowerCase().includes(searchText.toLowerCase())
-    );
-    console.log("검색된 상품목록:", searchList);
-    setSearchProductList(searchList);
-  }, [searchText]);
+  // useEffect(() => {
+  //   const searchList = productsList.filter((now) =>
+  //     now.title.toLowerCase().includes(searchText.toLowerCase())
+  //   );
+  //   // console.log("검색된 상품목록:", searchList);
+  //   setSearchProductList(searchList);
+  // }, [searchText]);
 
   return (
     <div className="fixed z-10 w-full navbar shadow-lg bg-white dark:bg-base-200 text-neutral-content">
@@ -129,10 +129,10 @@ const Header = () => {
               type="text"
               placeholder="검색"
               className="input input-bordered md:w-auto bg-gray-300 dark:bg-gray-600 !text-gray-800 dark:!text-white"
-              onChange={(event) => {
-                console.log("입력한값:", event.target.value);
-                setSearchText(event.target.value);
-              }}
+              // onChange={(event) => {
+              //   console.log("입력한값:", event.target.value);
+              //   setSearchText(event.target.value);
+              // }}
             />
           </div>
           <Link to="/cart" className="btn btn-ghost sm:w-12 ml-1">
