@@ -1,14 +1,14 @@
 import { useRecoilValue } from "recoil";
 import Carousel from "../Componants/common/Slider";
 import ProductList from "../Componants/products/ProductList";
-import { productsListState } from "../store/products";
-import { AccessoryListState } from "../store/products";
-import { digitalListState } from "../store/products";
+import { productsListSelctor } from "../store/products";
+import { AccessoryListSelctor } from "../store/products";
+import { digitalListSelctor } from "../store/products";
 
 const Index = () => {
-  const productsList = useRecoilValue(productsListState);
-  const accessoryList = useRecoilValue(AccessoryListState);
-  const digitalList = useRecoilValue(digitalListState);
+  const productsList = useRecoilValue(productsListSelctor);
+  const accessoryList = useRecoilValue(AccessoryListSelctor);
+  const digitalList = useRecoilValue(digitalListSelctor);
 
   return (
     <div>

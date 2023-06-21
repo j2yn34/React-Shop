@@ -1,10 +1,10 @@
 import { useRecoilValue } from "recoil";
 import ProductList from "../Componants/products/ProductList";
-import { digitalListState } from "../store/products";
+import { digitalListSelctor } from "../store/products";
 import Breadcrumb from "../Componants/common/Breadcrumb";
 
 const Digital = () => {
-  const digitalList = useRecoilValue(digitalListState);
+  const digitalList = useRecoilValue(digitalListSelctor);
 
   return (
     <section className="pt-4 lg:pt-5 pb-4 lg:pb-8 px-4 xl:px-2 xl:container mx-auto">

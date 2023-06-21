@@ -1,10 +1,10 @@
 import { useRecoilValue } from "recoil";
 import ProductList from "../Componants/products/ProductList";
-import { AccessoryListState } from "../store/products";
+import { AccessoryListSelctor } from "../store/products";
 import Breadcrumb from "../Componants/common/Breadcrumb";
 
 const Accessory = () => {
-  const accessoryList = useRecoilValue(AccessoryListState);
+  const accessoryList = useRecoilValue(AccessoryListSelctor);
 
   return (
     <section className="pt-4 lg:pt-5 pb-4 lg:pb-8 px-4 xl:px-2 xl:container mx-auto">

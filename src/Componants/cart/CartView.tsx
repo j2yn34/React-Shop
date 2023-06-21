@@ -5,6 +5,7 @@ import Breadcrumb from "../common/Breadcrumb";
 import { Product } from "../../store/products";
 import { cartState } from "../../store/cart";
 import Confirm from "../common/Confirm";
+import CartList from "./CartList";
 
 const CartView = () => {
   const getCartList = useRecoilValue<Product[]>(cartState);
@@ -38,6 +39,7 @@ const CartView = () => {
           {getCartList.map((now) => {
             return <div key={now.id}>{JSON.stringify(now)}</div>;
           })}
+          <CartList />
         </div>
         <div className="self-start shrink-0 flex items-center mt-10 mb-20">
           <span className="text-xl md:text-2xl">총: ${totalPrice}</span>
