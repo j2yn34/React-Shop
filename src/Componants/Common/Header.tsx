@@ -127,7 +127,7 @@ const Header = () => {
           <div className="form-control">
             <input
               type="text"
-              placeholder="검색"
+              placeholder="검색!!"
               className="input input-bordered md:w-auto bg-gray-300 dark:bg-gray-600 !text-gray-800 dark:!text-white"
               // onChange={(event) => {
               //   console.log("입력한값:", event.target.value);
