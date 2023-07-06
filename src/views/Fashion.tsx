@@ -1,7 +1,7 @@
 import { useRecoilValue } from "recoil";
-import ProductList from "../Componants/products/ProductList";
+import ProductList from "../components/products/ProductList";
 import { fashionListSelctor } from "../store/products";
-import Breadcrumb from "../Componants/common/Breadcrumb";
+import Breadcrumb from "../components/common/Breadcrumb";
 
 const Fashion = () => {
   const fashionList = useRecoilValue(fashionListSelctor);

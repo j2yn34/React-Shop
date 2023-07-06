@@ -1,4 +1,4 @@
-import CartView from "../Componants/cart/CartView";
+import CartView from "../components/cart/CartView";
 
 const Cart = () => {
   return (

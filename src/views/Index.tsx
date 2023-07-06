@@ -1,6 +1,6 @@
 import { useRecoilValue } from "recoil";
-import Carousel from "../Componants/common/Slider";
-import ProductList from "../Componants/products/ProductList";
+import Carousel from "../components/common/Slider";
+import ProductList from "../components/products/ProductList";
 import { productsListSelctor } from "../store/products";
 import { AccessoryListSelctor } from "../store/products";
 import { digitalListSelctor } from "../store/products";

@@ -3,15 +3,15 @@ import Index from "./views/Index";
 import Fashion from "./views/Fashion";
 import Accessory from "./views/Accessory";
 import Digital from "./views/Digital";
-import Detail from "./Componants/products/ProductView";
+import Detail from "./components/products/ProductView";
 import { useEffect, useRef } from "react";
 import { useSetRecoilState } from "recoil";
 import { Product } from "./store/products";
 import { cartState } from "./store/cart";
-import Header from "./Componants/common/Header";
-import Footer from "./Componants/common/Footer";
-import Error from "./Componants/common/Error";
-import Drawer from "./Componants/common/Drawer";
+import Header from "./components/common/Header";
+import Footer from "./components/common/Footer";
+import Error from "./components/common/Error";
+import Drawer from "./components/common/Drawer";
 import Cart from "./views/Cart";
 
 const App = (): JSX.Element => {
