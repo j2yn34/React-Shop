@@ -254,27 +254,21 @@ const GithubIcon: React.FC = () => {
 };
 
 const Footer: React.FC = () => {
+  const icons = [
+    <VisaIcon />,
+    <MastercardIcon />,
+    <AmericanExpressIcon />,
+    <PayPalIcon />,
+    <DinersClubsIcon />,
+    <DiscoverIcon />,
+  ];
+
   return (
     <footer className="dark:bg-base-200 bg-gray-100 text-base-content p-10 footer footer-center">
       <ul className="flex">
-        <li>
-          <VisaIcon />
-        </li>
-        <li>
-          <MastercardIcon />
-        </li>
-        <li>
-          <AmericanExpressIcon />
-        </li>
-        <li>
-          <PayPalIcon />
-        </li>
-        <li>
-          <DinersClubsIcon />
-        </li>
-        <li>
-          <DiscoverIcon />
-        </li>
+        {icons.map((icon, index) => (
+          <li key={index}>{icon}</li>
+        ))}
       </ul>
       <div className="grid grid-flow-col gap-4">
         <p>Copyright © 2023 Park JiYeon</p>
