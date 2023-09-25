@@ -20,7 +20,7 @@ const sliderData = [
     small: "다양한 디지털 상품을 둘러보세요.",
   },
   {
-    name: "error",
+    name: "grocery",
     src: groceryImage,
     text: "신선한 식품!",
     small: "농장 직배송으로 더욱 신선한 식료품을 만나보세요.",

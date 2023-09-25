@@ -1,18 +1,12 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Index from "./views/Index";
-import Fashion from "./views/Fashion";
-import Accessory from "./views/Accessory";
-import Digital from "./views/Digital";
-import Detail from "./components/products/ProductView";
+import { BrowserRouter } from "react-router-dom";
 import { useEffect, useRef } from "react";
 import { useSetRecoilState } from "recoil";
 import { Product } from "./store/products";
 import { cartState } from "./store/cart";
 import Header from "./components/common/Header";
 import Footer from "./components/common/Footer";
-import Error from "./components/common/Error";
 import Drawer from "./components/common/Drawer";
-import Cart from "./views/Cart";
+import Router from "./router/router";
 
 const App = (): JSX.Element => {
   const $hamburgur = useRef<HTMLInputElement>(null);
@@ -37,15 +31,7 @@ const App = (): JSX.Element => {
         <div className="drawer-content">
           <Header />
           <section className="main pt-16 ">
-            <Routes>
-              <Route path="/" element={<Index />} />
-              <Route path="/error" element={<Error />} />
-              <Route path="/cart" element={<Cart />} />
-              <Route path="/fashion" element={<Fashion />} />
-              <Route path="/accessory" element={<Accessory />} />
-              <Route path="/digital" element={<Digital />} />
-              <Route path="/product/:id" element={<Detail />} />
-            </Routes>
+            <Router />
           </section>
           <Footer />
         </div>
