@@ -17,8 +17,8 @@ export interface Product {
   readonly rating: Rating;
 }
 
-export const productsListSelctor = selector<Product[]>({
-  key: "productsListSelctor",
+export const productsListSelector = selector<Product[]>({
+  key: "productsListSelector",
   get: async () => {
     try {
       const response = await fetch(productsURL as string);
@@ -30,10 +30,10 @@ export const productsListSelctor = selector<Product[]>({
   },
 });
 
-export const fashionListSelctor = selector<Product[]>({
-  key: "fashionListSSelctor",
+export const fashionListSelector = selector<Product[]>({
+  key: "fashionListSelector",
   get: ({ get }) => {
-    const productsList = get(productsListSelctor);
+    const productsList = get(productsListSelector);
     return (
       productsList.filter((product) => product.category.includes("clothing")) ||
       []
@@ -41,20 +41,20 @@ export const fashionListSelctor = selector<Product[]>({
   },
 });
 
-export const digitalListSelctor = selector<Product[]>({
+export const digitalListSelector = selector<Product[]>({
   key: "digitalListState",
   get: ({ get }) => {
-    const productsList = get(productsListSelctor);
+    const productsList = get(productsListSelector);
     return (
       productsList.filter((product) => product.category == "electronics") || []
     );
   },
 });
 
-export const AccessoryListSelctor = selector<Product[]>({
-  key: "accessoryListSelctor",
+export const AccessoryListSelector = selector<Product[]>({
+  key: "accessoryListSelector",
   get: ({ get }) => {
-    const productsList = get(productsListSelctor);
+    const productsList = get(productsListSelector);
     return (
       productsList.filter((product) => product.category == "jewelery") || []
     );

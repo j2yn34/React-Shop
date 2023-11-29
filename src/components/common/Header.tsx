@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom";
 import { useRecoilValue } from "recoil";
-import { Product, productsListSelctor } from "../../store/products";
+import { Product, productsListSelector } from "../../store/products";
 import { cartState } from "../../store/cart";
 import React, { useEffect } from "react";
 
 const Header = () => {
   const getCartList = useRecoilValue<Product[]>(cartState);
-  // const productsList = useRecoilValue(productsListSelctor);
+  const productsList = useRecoilValue(productsListSelector);
 
   // const [searchText, setSearchText] = React.useState("");
   // const [searchProductList, setSearchProductList] = React.useState<Product[]>(

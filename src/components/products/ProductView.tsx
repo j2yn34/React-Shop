@@ -1,5 +1,5 @@
 import { useRecoilValue, useSetRecoilState } from "recoil";
-import { Product, productsListSelctor } from "../../store/products";
+import { Product, productsListSelector } from "../../store/products";
 import { cartState } from "../../store/cart";
 import { useEffect, useState } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
@@ -11,7 +11,7 @@ const Index = () => {
   //장바구니 목록을 불러올때는 useRecoilValue
   // const getCartList = useRecoilValue<Product[]>(cartState);
   const setCartList = useSetRecoilState<Product[]>(cartState);
-  const productsList = useRecoilValue(productsListSelctor);
+  const productsList = useRecoilValue(productsListSelector);
   const { id } = useParams();
 
   const [product, setProudct] = useState<Product | null>(null);

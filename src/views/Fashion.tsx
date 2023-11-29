@@ -1,10 +1,10 @@
 import { useRecoilValue } from "recoil";
 import ProductList from "../components/products/ProductList";
-import { fashionListSelctor } from "../store/products";
+import { fashionListSelector } from "../store/products";
 import Breadcrumb from "../components/common/Breadcrumb";
 
 const Fashion = () => {
-  const fashionList = useRecoilValue(fashionListSelctor);
+  const fashionList = useRecoilValue(fashionListSelector);
 
   return (
     <section className="pt-4 lg:pt-5 pb-4 lg:pb-8 px-4 xl:px-2 xl:container mx-auto">
