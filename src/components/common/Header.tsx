@@ -2,16 +2,14 @@ import { Link } from "react-router-dom";
 import { useRecoilValue } from "recoil";
 import { Product, productsListSelector } from "../../store/products";
 import { cartState } from "../../store/cart";
-import React, { useEffect } from "react";
+import { useState, useEffect } from "react";
 
 const Header = () => {
   const getCartList = useRecoilValue<Product[]>(cartState);
   const productsList = useRecoilValue(productsListSelector);
 
-  // const [searchText, setSearchText] = React.useState("");
-  // const [searchProductList, setSearchProductList] = React.useState<Product[]>(
-  //   []
-  // );
+  const [searchText, setSearchText] = useState("");
+  const [searchProductList, setSearchProductList] = useState<Product[]>([]);
 
   const menus = [
     { name: "fashion", title: "패션" },
@@ -54,13 +52,13 @@ const Header = () => {
     }
   }, []);
 
-  // useEffect(() => {
-  //   const searchList = productsList.filter((now) =>
-  //     now.title.toLowerCase().includes(searchText.toLowerCase())
-  //   );
-  //   // console.log("검색된 상품목록:", searchList);
-  //   setSearchProductList(searchList);
-  // }, [searchText]);
+  useEffect(() => {
+    const searchList = productsList.filter((product) =>
+      product.title.toLowerCase().includes(searchText.toLowerCase())
+    );
+    // console.log("검색된 상품목록:", searchList);
+    setSearchProductList(searchList);
+  }, [searchText]);
 
   return (
     <div className="fixed z-10 w-full navbar shadow-lg bg-white dark:bg-base-200 text-neutral-content">
@@ -105,7 +103,7 @@ const Header = () => {
           })}
         </div>
 
-        <div className="flex items-center px-2">
+        <div className="flex items-center px-2 relative">
           <label className="swap swap-rotate mr-2 sm:mr-4">
             <input type="checkbox" className="js-theme" onClick={themeChange} />
             <svg
@@ -123,18 +121,27 @@ const Header = () => {
               <path d="M21.64,13a1,1,0,0,0-1.05-.14,8.05,8.05,0,0,1-3.37.73A8.15,8.15,0,0,1,9.08,5.49a8.59,8.59,0,0,1,.25-2A1,1,0,0,0,8,2.36,10.14,10.14,0,1,0,22,14.05,1,1,0,0,0,21.64,13Zm-9.5,6.69A8.14,8.14,0,0,1,7.08,5.22v.27A10.15,10.15,0,0,0,17.22,15.63a9.79,9.79,0,0,0,2.1-.22A8.11,8.11,0,0,1,12.14,19.73Z" />
             </svg>
           </label>
-          {/* {JSON.stringify(searchProductList.map((now) => now.title))} */}
           <div className="form-control">
             <input
               type="text"
               placeholder="검색"
-              className="input input-bordered md:w-auto bg-gray-300 dark:bg-gray-600 !text-gray-800 dark:!text-white"
-              // onChange={(event) => {
-              //   console.log("입력한값:", event.target.value);
-              //   setSearchText(event.target.value);
-              // }}
+              className="input input-bordered sm:w-56 bg-gray-300 dark:bg-gray-600 !text-gray-800 dark:!text-white focus:outline-none"
+              onChange={(event) => {
+                setSearchText(event.target.value);
+              }}
             />
           </div>
+
+          <ul className="absolute top-14 left-12 w-60 max-h-96 p-2 bg-gray-600 overflow-y-scroll">
+            {searchProductList.map((product) => {
+              return (
+                <li key={product.id} className="py-3">
+                  <button className="text-left">{product.title}</button>
+                </li>
+              );
+            })}
+          </ul>
+
           <Link to="/cart" className="btn btn-ghost sm:w-12 ml-1">
             <span className="relative">
               <svg
