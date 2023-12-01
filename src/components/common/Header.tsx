@@ -1,10 +1,11 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useRecoilValue } from "recoil";
 import { Product, productsListSelector } from "../../store/products";
 import { cartState } from "../../store/cart";
 import { useState, useEffect, useRef } from "react";
 
 const Header = () => {
+  const navigate = useNavigate();
   const getCartList = useRecoilValue<Product[]>(cartState);
   const productsList = useRecoilValue(productsListSelector);
 
@@ -78,6 +79,11 @@ const Header = () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
+
+  const goToDetail = (productId) => {
+    navigate(`/product/${productId}`);
+    setSearchFocus(false);
+  };
 
   return (
     <div className="fixed z-10 w-full navbar shadow-lg bg-white dark:bg-base-200 text-neutral-content">
@@ -160,7 +166,10 @@ const Header = () => {
               {searchProductList.map((product) => {
                 return (
                   <li key={product.id} className="py-3">
-                    <button className="text-left hover:text-base-content">
+                    <button
+                      className="text-left hover:text-base-content"
+                      onClick={() => goToDetail(product.id)}
+                    >
                       {product.title}
                     </button>
                   </li>
