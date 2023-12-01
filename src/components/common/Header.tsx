@@ -10,6 +10,7 @@ const Header = () => {
 
   const [searchText, setSearchText] = useState("");
   const [searchProductList, setSearchProductList] = useState<Product[]>([]);
+  const [searchFocus, setSearchFocus] = useState(false);
 
   const menus = [
     { name: "fashion", title: "패션" },
@@ -129,10 +130,16 @@ const Header = () => {
               onChange={(event) => {
                 setSearchText(event.target.value);
               }}
+              onFocus={() => setSearchFocus(true)}
+              onBlur={() => setSearchFocus(false)}
             />
           </div>
 
-          <ul className="absolute top-14 left-12 w-60 max-h-96 p-2 bg-gray-600 overflow-y-scroll">
+          <ul
+            className={`absolute top-14 left-12 w-60 max-h-96 p-2 bg-gray-600 overflow-y-scroll ${
+              searchFocus ? "block" : "hidden"
+            }`}
+          >
             {searchProductList.map((product) => {
               return (
                 <li key={product.id} className="py-3">
