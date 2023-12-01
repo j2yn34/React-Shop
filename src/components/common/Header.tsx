@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { useRecoilValue } from "recoil";
 import { Product, productsListSelector } from "../../store/products";
 import { cartState } from "../../store/cart";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 const Header = () => {
   const getCartList = useRecoilValue<Product[]>(cartState);
@@ -11,6 +11,7 @@ const Header = () => {
   const [searchText, setSearchText] = useState("");
   const [searchProductList, setSearchProductList] = useState<Product[]>([]);
   const [searchFocus, setSearchFocus] = useState(false);
+  const searchRef = useRef<HTMLDivElement | null>(null);
 
   const menus = [
     { name: "fashion", title: "패션" },
@@ -60,6 +61,23 @@ const Header = () => {
     // console.log("검색된 상품목록:", searchList);
     setSearchProductList(searchList);
   }, [searchText]);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        searchRef.current &&
+        !(searchRef.current as HTMLElement).contains(event.target as Node)
+      ) {
+        setSearchFocus(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   return (
     <div className="fixed z-10 w-full navbar shadow-lg bg-white dark:bg-base-200 text-neutral-content">
@@ -122,32 +140,34 @@ const Header = () => {
               <path d="M21.64,13a1,1,0,0,0-1.05-.14,8.05,8.05,0,0,1-3.37.73A8.15,8.15,0,0,1,9.08,5.49a8.59,8.59,0,0,1,.25-2A1,1,0,0,0,8,2.36,10.14,10.14,0,1,0,22,14.05,1,1,0,0,0,21.64,13Zm-9.5,6.69A8.14,8.14,0,0,1,7.08,5.22v.27A10.15,10.15,0,0,0,17.22,15.63a9.79,9.79,0,0,0,2.1-.22A8.11,8.11,0,0,1,12.14,19.73Z" />
             </svg>
           </label>
-          <div className="form-control">
-            <input
-              type="text"
-              placeholder="검색"
-              className="input input-bordered sm:w-56 bg-gray-300 dark:bg-gray-600 !text-gray-800 dark:!text-white focus:outline-none"
-              onChange={(event) => {
-                setSearchText(event.target.value);
-              }}
-              onFocus={() => setSearchFocus(true)}
-              onBlur={() => setSearchFocus(false)}
-            />
+          <div ref={searchRef}>
+            <div className="form-control">
+              <input
+                type="text"
+                placeholder="검색"
+                className="input input-bordered sm:w-56 bg-gray-300 dark:bg-gray-600 !text-gray-800 dark:!text-white focus:outline-none"
+                onChange={(event) => {
+                  setSearchText(event.target.value);
+                }}
+                onFocus={() => setSearchFocus(true)}
+              />
+            </div>
+            <ul
+              className={`absolute top-14 left-12 w-60 max-h-96 p-2 bg-gray-600 overflow-y-scroll ${
+                searchFocus ? "block" : "hidden"
+              }`}
+            >
+              {searchProductList.map((product) => {
+                return (
+                  <li key={product.id} className="py-3">
+                    <button className="text-left hover:text-base-content">
+                      {product.title}
+                    </button>
+                  </li>
+                );
+              })}
+            </ul>
           </div>
-
-          <ul
-            className={`absolute top-14 left-12 w-60 max-h-96 p-2 bg-gray-600 overflow-y-scroll ${
-              searchFocus ? "block" : "hidden"
-            }`}
-          >
-            {searchProductList.map((product) => {
-              return (
-                <li key={product.id} className="py-3">
-                  <button className="text-left">{product.title}</button>
-                </li>
-              );
-            })}
-          </ul>
 
           <Link to="/cart" className="btn btn-ghost sm:w-12 ml-1">
             <span className="relative">
